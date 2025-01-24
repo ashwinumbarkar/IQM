@@ -1,0 +1,188 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  .homepage-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  /* Welcome Section */
+  .welcome {
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 50px 20px;
+  }
+  
+  .welcome-title {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .welcome-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  /* Button Styling */
+  .button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button.primary {
+    background-color: #28a745;
+    color: white;
+    width: 150px;
+  }
+  .button.primary a{
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+  }
+  
+.button.secondary a{
+    text-decoration: none;
+    background-color: white;
+    color: #007bff;
+    
+}
+
+  .button.primary :hover {
+    background-color: #218838;
+  }
+  
+  .button.secondary {
+    background-color: white;
+    color: #007bff;
+    border: 2px solid #007bff;
+    width: 150px;
+  }
+  
+  .button.secondary a:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* About Section */
+  .about {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .about-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    text-align: left;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* How It Works Section */
+  .how-it-works {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+  }
+  
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .step {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 250px;
+    text-align: center;
+  }
+  
+  .step-number {
+    font-size: 2rem;
+    color: #007bff;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .step-text {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Call to Action Section */
+  .cta {
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 40px 20px;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .about-cards,
+    .steps {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .welcome-buttons,
+    .cta-buttons {
+      flex-direction: column;
+    }
+  }
+  
