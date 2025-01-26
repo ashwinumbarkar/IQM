@@ -13,7 +13,7 @@ export default function ExploreQuestions() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch("http://localhost:5000/api/getInterviewQs");
+          const response = await fetch("http://65.2.38.28:5000/api/getInterviewQs");
           const result = await response.json();
           if (response.ok) {
             setInterviewData(result.data);

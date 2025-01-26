@@ -43,9 +43,9 @@ const AddQuestions = () => {
   const handleSubmit = async (e) => {
   
     e.preventDefault();
-  
+    //http://65.2.38.28:5000/api/getInterviewQs
     try {
-      const response = await fetch("http://localhost:5000/api/InterviewQs", {
+      const response = await fetch("http://65.2.38.28:5000/api/InterviewQs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
