@@ -1,76 +1,108 @@
-#interview-cards-container {
-    display: flex;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
+#explore-questions-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+}
+
+#filter-section {
+  background: #f5f5f5; /* Light gray background */
+  padding: 20px;
+  border-radius: 8px;
+  width: 250px; /* Fixed width for the filter section */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.filter-heading {
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  color: #333;
+  font-weight: bold;
+}
+
+.filter-label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 1em;
+  color: #555;
+}
+
+.filter-dropdown {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.multi-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.multi-select label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.multi-select input[type="checkbox"] {
+  margin: 0;
+}
+
+#cards-section {
+  flex: 1; /* Take the remaining space */
+ display: flex;
+ flex-wrap: wrap;
+justify-content: center;
   
-  #filter-section {
-    flex: 1;
-    padding: 20px;
-    border-right: 1px solid #ccc;
-  }
-  
-  .filter-heading {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-  
-  .filter-label {
-    display: block;
-    margin-bottom: 15px;
-    font-size: 14px;
-  }
-  
-  .filter-dropdown {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  #cards-section {
-    flex: 3;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .interview-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    width: calc(33.33% - 20px);
-    box-sizing: border-box;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-client-name {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .card-position,
-  .card-tech-stack,
-  .card-level {
-    margin: 5px 0;
-    font-size: 14px;
-  }
-  
-  .explore-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .explore-button:hover {
-    background-color: #0056b3;
-  }
-  
+   gap: 20px;
+  align-items: start; 
+}
+
+.interview-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 300px;
+}
+
+.interview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-client-name {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #007bff; /* Blue color for emphasis */
+  margin-bottom: 10px;
+}
+
+.card-position,
+.card-tech-stack,
+.card-level {
+  font-size: 1em;
+  margin: 5px 0;
+  color: #555;
+}
+
+.explore-button {
+  padding: 10px 15px;
+  background: #007bff;
+  color: white;
+  font-size: 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.explore-button:hover {
+  background: #0056b3;
+}

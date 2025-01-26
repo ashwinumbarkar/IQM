@@ -1,25 +1,69 @@
 import React, { useState } from "react";
-import './AddQuestions.css'
+import Select from "react-select";
+import "./AddQuestions.css";
+
 const AddQuestions = () => {
   const [formData, setFormData] = useState({
     clientName: "",
     position: "",
-    techStack: "",
+    techStack: [],
     experience: 0,
     interviewDate: "",
-    interviewLevel: "l1",
-    questions: [""], // Initialize with one question
+    interviewLevel: "hrScreening",
+    questions: [""],
     machineCodingProblem: "",
-    codingProblem:"",
+    codingProblem: "",
     jobDescription: "",
   });
 
+  const techStackOptions = [
+    { value: "HTML", label: "HTML" },
+    { value: "CSS", label: "CSS" },
+    { value: "JavaScript", label: "JavaScript" },
+    { value: "React", label: "React" },
+    { value: "Node.js", label: "Node.js" },
+    { value: "Express.js", label: "Express.js" },
+    { value: "MongoDB", label: "MongoDB" },
+    { value: "Python", label: "Python" },
+    { value: "Java", label: "Java" },
+    { value: "C#", label: "C#" },
+    { value: "SQL", label: "SQL" },
+    { value: "TypeScript", label: "TypeScript" },
+    { value: "Docker", label: "Docker" },
+    { value: "Kubernetes", label: "Kubernetes" },
+    { value: "AWS", label: "AWS" },
+    { value: "CICD", label: "CICD" },
+    { value: "Jenkins", label: "Jenkins" },
+    { value: "DevOps", label: "DevOps" },
+    { value: "Java-8", label: "Java-8" },
+    { value: "TDD", label: "TDD" },
+    { value: "Selenium", label: "Selenium" },
+    { value: "Manual Testing", label: "Manual Testing" },
+    { value: "Automation Test", label: "Automation Test" },
+  ];
+  
+  const companyOptions = [
+    "Google",
+    "Microsoft",
+    "Amazon",
+    "Facebook",
+    "Netflix",
+    "Tesla",
+    "Apple",
+  ];
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,
+    }));
+  };
+
+  const handleTechStackChange = (selectedOptions) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      techStack: selectedOptions ? selectedOptions.map((option) => option.value) : [],
     }));
   };
 
@@ -36,35 +80,33 @@ const AddQuestions = () => {
   const addQuestion = () => {
     setFormData((prevState) => ({
       ...prevState,
-      questions: [...prevState.questions, ""], // Add a new empty question
+      questions: [...prevState.questions, ""],
     }));
   };
 
   const handleSubmit = async (e) => {
-  
     e.preventDefault();
-    //http://65.2.38.28:5000/api/getInterviewQs
+    console.log("Form Data Submitted: ", formData);
     try {
-      const response = await fetch("http://65.2.38.28:5000/api/InterviewQs", {
+      const response = await fetch("http://localhost:5000/api/InterviewQs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
         const result = await response.json();
         console.log("Form Data Submitted: ", result);
         alert("Form submitted successfully!");
-        // Reset the form after successful submission
         setFormData({
           clientName: "",
           position: "",
-          techStack: "",
+          techStack: [],
           experience: 0,
           interviewDate: "",
-          interviewLevel: "l1",
+          interviewLevel: "hrScreening",
           questions: [""],
           machineCodingProblem: "",
           codingProblem: "",
@@ -78,8 +120,6 @@ const AddQuestions = () => {
       console.error("Error submitting form:", error);
       alert("An error occurred. Please try again later.");
     }
-
-  
   };
 
   return (
@@ -88,13 +128,19 @@ const AddQuestions = () => {
       <form onSubmit={handleSubmit}>
         <label>
           Client Name:
-          <input
-            type="text"
+          <select
             name="clientName"
             value={formData.clientName}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Select Company</option>
+            {companyOptions.map((company, index) => (
+              <option key={index} value={company}>
+                {company}
+              </option>
+            ))}
+          </select>
         </label>
         <br />
 
@@ -112,12 +158,13 @@ const AddQuestions = () => {
 
         <label>
           Tech Stack:
-          <input
-            type="text"
-            name="techStack"
-            value={formData.techStack}
-            onChange={handleChange}
-            required
+          <Select
+            isMulti
+            options={techStackOptions}
+            value={techStackOptions.filter((option) =>
+              formData.techStack.includes(option.value)
+            )}
+            onChange={handleTechStackChange}
           />
         </label>
         <br />
@@ -156,11 +203,13 @@ const AddQuestions = () => {
             onChange={handleChange}
             required
           >
-            <option value="l1">L1</option>
-            <option value="l2">L2</option>
-            <option value="l3">L3</option>
-            <option value="l4">L4</option>
-            <option value="l5">L5</option>
+            <option value="hrScreening">HR Screening</option>
+            <option value="technical1">Technical Level 1</option>
+            <option value="technical2">Technical Level 2</option>
+            <option value="technical3">Technical Level 3</option>
+            <option value="technical4">Technical Level 4</option>
+            <option value="technical5">Technical Level 5</option>
+            <option value="finalHR">Final HR</option>
           </select>
         </label>
         <br />
@@ -181,28 +230,27 @@ const AddQuestions = () => {
           Add Question +
         </button>
         <br />
+
         <label>
           Coding Problem Statement:
           <textarea
-            type="text"
             name="codingProblem"
             rows="4"
             cols="50"
             value={formData.codingProblem}
             onChange={handleChange}
-            
           />
         </label>
+        <br />
+
         <label>
           Machine Coding Problem Statement:
           <textarea
-            type="text"
             name="machineCodingProblem"
             rows="4"
             cols="50"
             value={formData.machineCodingProblem}
             onChange={handleChange}
-            
           />
         </label>
         <br />
@@ -211,11 +259,10 @@ const AddQuestions = () => {
           Job Description:
           <textarea
             name="jobDescription"
-            value={formData.jobDescription}
-            onChange={handleChange}
             rows="4"
             cols="50"
-            
+            value={formData.jobDescription}
+            onChange={handleChange}
           />
         </label>
         <br />
